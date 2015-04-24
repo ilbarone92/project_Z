@@ -9,8 +9,8 @@ import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Toast;
 
 public class GameActivity extends Activity {
@@ -70,23 +70,26 @@ public class GameActivity extends Activity {
 		viewX = (View) findViewById(R.id.ViewX);
 		viewY = (View) findViewById(R.id.ViewY);
 
-		manager = (LocationManager) getSystemService(LOCATION_SERVICE);
+		
 		display = getWindowManager().getDefaultDisplay();
 
 		screenWidth = display.getWidth();
 		screenHeight = display.getHeight();
 
-		viewX.setLayoutParams(new LayoutParams((screenWidth / 2) - (pallino.getWidth() / 2), viewX.getHeight()));
-		viewY.setLayoutParams(new LayoutParams(viewY.getWidth(), (screenHeight / 2) - (pallino.getHeight() / 2)));
+		viewY.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, (screenHeight / 2) - (pallino.getHeight() / 2)));
+		viewX.setLayoutParams(new LayoutParams((screenWidth / 2) - (pallino.getWidth() / 2), LayoutParams.MATCH_PARENT));
+		
 
 		xMax = 20;
 		yMax = xMax * (screenHeight / screenWidth);
+		
+//		manager = (LocationManager) getSystemService(LOCATION_SERVICE);
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
-		manager.requestLocationUpdates(locationProvider, MIN_TIME, MIN_DISTANCE, listener);
+//		manager.requestLocationUpdates(locationProvider, MIN_TIME, MIN_DISTANCE, listener);
 
 	}
 
@@ -101,8 +104,8 @@ public class GameActivity extends Activity {
 		//calcolo della x e y in termini di pixel
 		int x_pixel=(int) Math.round(((((xMax/2) + x)*screenWidth/xMax)-(pallino.getWidth()/2))); 
 		int y_pixel=(int) Math.round(((((yMax/2) + y)*screenHeight/yMax)-(pallino.getHeight()/2)));
-		viewX.setLayoutParams(new LayoutParams(x_pixel, viewX.getHeight()));
-		viewY.setLayoutParams(new LayoutParams(viewY.getWidth(), y_pixel));
+		viewX.setLayoutParams(new LayoutParams(x_pixel, LayoutParams.MATCH_PARENT));
+		viewY.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, y_pixel));
 		
 	}
 

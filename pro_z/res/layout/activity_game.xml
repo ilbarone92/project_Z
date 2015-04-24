@@ -10,13 +10,15 @@
         android:layout_width="10dp"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:background="#ff0000"/>
     <View
         android:id="@+id/ViewY"
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:layout_toRightOf="@id/ViewX"
-        android:layout_alignParentBottom="true"/>
+        android:layout_alignParentBottom="true"
+        android:background="#00ff00"/>
 
     
 

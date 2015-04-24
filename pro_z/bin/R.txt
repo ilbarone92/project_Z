@@ -406,8 +406,8 @@ int drawable abc_textfield_search_material 0x7f02003a
 int drawable ic_launcher 0x7f02003b
 int drawable mappa 0x7f02003c
 int drawable pallino_blu 0x7f02003d
-int id ViewX 0x7f090050
-int id ViewY 0x7f09004f
+int id ViewX 0x7f09004f
+int id ViewY 0x7f090050
 int id action_bar 0x7f090040
 int id action_bar_activity_content 0x7f090003
 int id action_bar_container 0x7f09003f
