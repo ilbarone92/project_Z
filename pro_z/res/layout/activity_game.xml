@@ -5,6 +5,5 @@
     android:background="@drawable/mappa"
     tools:context="com.example.pro_z.GameActivity" >
 
-    
 
 </RelativeLayout>
