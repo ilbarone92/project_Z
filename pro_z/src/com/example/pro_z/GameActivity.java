@@ -7,6 +7,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 public class GameActivity extends Activity {
@@ -17,7 +18,9 @@ public class GameActivity extends Activity {
 	String locationProvider = LocationManager.GPS_PROVIDER;
 	private double latitude;
 	private double longitude;
-
+	private ImageView pallino;
+	
+	
 	LocationListener listener = new LocationListener() {
 
 		@Override
@@ -36,6 +39,7 @@ public class GameActivity extends Activity {
 		public void onLocationChanged(Location location) {
 			latitude = location.getLatitude();
 			longitude = location.getLongitude();
+			updateGUI(location);
 		}
 
 	};
@@ -44,6 +48,7 @@ public class GameActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game);
+		pallino.setImageResource(R.drawable.pallino_blu);
 
 	}
 
