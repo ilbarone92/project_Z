@@ -5,5 +5,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Opzioni</string>
     <string name="title_activity_game">GameActivity</string>
-	
+	<string name="pallino">Pallino</string>
+	<string name="inizia_partita">INIZIA PARTITA</string>
 </resources>
