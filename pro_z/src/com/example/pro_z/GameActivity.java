@@ -27,6 +27,13 @@ public class GameActivity extends Activity {
 	private View viewY;
 	private View viewX;
 	private ImageView pallino;
+	private boolean started = false;
+	private double startLatitude;
+	private double startLongitude;
+	private int xMax;
+	private float yMax;
+	private double latitude;
+	private double longitude;
 
 	LocationListener listener = new LocationListener() {
 
@@ -44,6 +51,11 @@ public class GameActivity extends Activity {
 
 		@Override
 		public void onLocationChanged(Location location) {
+			if (!started) {
+				startLatitude = location.getLatitude();
+				startLongitude = location.getLongitude();
+				started = true;
+			}
 			updateGUI(location);
 		}
 
@@ -66,25 +78,32 @@ public class GameActivity extends Activity {
 
 		viewX.setLayoutParams(new LayoutParams((screenWidth / 2) - (pallino.getWidth() / 2), viewX.getHeight()));
 		viewY.setLayoutParams(new LayoutParams(viewY.getWidth(), (screenHeight / 2) - (pallino.getHeight() / 2)));
+
+		xMax = 20;
+		yMax = xMax * (screenHeight / screenWidth);
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 		manager.requestLocationUpdates(locationProvider, MIN_TIME, MIN_DISTANCE, listener);
-		Location location = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-		if (location != null)
-			updateGUI(location);
 
 	}
 
 	public void updateGUI(Location location) {
-		double latitude;
-		double longitude;
-
 		latitude = location.getLatitude();
 		longitude = location.getLongitude();
-
+		
+		//calcolo di x e y in termini di metri
+		double x = (longitude - startLongitude)*CIRC_EQUATORE/360;
+		double y = (latitude - startLatitude)*CIRC_MERIDIANO/180;
+		
+		//calcolo della x e y in termini di pixel
+		int x_pixel=(int) Math.round(((((xMax/2) + x)*screenWidth/xMax)-(pallino.getWidth()/2))); 
+		int y_pixel=(int) Math.round(((((yMax/2) + y)*screenHeight/yMax)-(pallino.getHeight()/2)));
+		viewX.setLayoutParams(new LayoutParams(x_pixel, viewX.getHeight()));
+		viewY.setLayoutParams(new LayoutParams(viewY.getWidth(), y_pixel));
+		
 	}
 
 	@Override

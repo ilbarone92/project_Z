@@ -5,26 +5,28 @@
     android:background="@drawable/mappa"
     tools:context=".GameActivity" >
 
-	<View 	
-	    android:layout_width="match_parent"
-	    android:layout_height="10dp"
-	    android:id="@+id/ViewY"
-	    android:layout_alignParentLeft="true"
-	    android:layout_alignParentStart="true"/>
-    <View 	
-	    android:layout_width="10dp"
-	    android:layout_height="match_parent"
-	    android:id="@+id/ViewX"
-	    android:layout_alignParentLeft="true"
-	    android:layout_below="@id/ViewY"/>
+    <View
+        android:id="@+id/ViewX"
+        android:layout_width="10dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"/>
+    <View
+        android:id="@+id/ViewY"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_toRightOf="@id/ViewX"
+        android:layout_alignParentBottom="true"/>
+
+    
 
     <ImageView
+        android:id="@+id/pallino"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/ViewY"
+        android:layout_above="@id/ViewY"
         android:layout_toRightOf="@id/ViewX"
         android:contentDescription="@string/pallino"
-        android:src="@drawable/pallino_blu"
-        android:id="@+id/pallino" />
+        android:src="@drawable/pallino_blu" />
 
 </RelativeLayout>
