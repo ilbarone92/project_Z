@@ -34,7 +34,10 @@ public class GameActivity extends Activity {
 	private float yMax;
 	private double latitude;
 	private double longitude;
-
+	
+/**
+ * Classe interna per gestire la localizzazione con override di onLocationChanged
+ */
 	LocationListener listener = new LocationListener() {
 
 		@Override
@@ -76,20 +79,22 @@ public class GameActivity extends Activity {
 		screenWidth = display.getWidth();
 		screenHeight = display.getHeight();
 
-		viewY.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, (screenHeight / 2) - (pallino.getHeight() / 2)));
-		viewX.setLayoutParams(new LayoutParams((screenWidth / 2) - (pallino.getWidth() / 2), LayoutParams.MATCH_PARENT));
+		viewY.getLayoutParams().height=(screenHeight / 2) - (pallino.getHeight() / 2);
+		viewY.setLayoutParams(viewY.getLayoutParams());
+		viewX.getLayoutParams().width=(screenWidth / 2) - (pallino.getWidth() / 2);
+		viewX.setLayoutParams(viewX.getLayoutParams());
 		
 
-		xMax = 20;
+		xMax = 200;
 		yMax = xMax * (screenHeight / screenWidth);
 		
-//		manager = (LocationManager) getSystemService(LOCATION_SERVICE);
+		manager = (LocationManager) getSystemService(LOCATION_SERVICE);
 	}
 
 	@Override
 	protected void onResume() {
 		super.onResume();
-//		manager.requestLocationUpdates(locationProvider, MIN_TIME, MIN_DISTANCE, listener);
+		manager.requestLocationUpdates(locationProvider, MIN_TIME, MIN_DISTANCE, listener);
 
 	}
 
@@ -104,8 +109,12 @@ public class GameActivity extends Activity {
 		//calcolo della x e y in termini di pixel
 		int x_pixel=(int) Math.round(((((xMax/2) + x)*screenWidth/xMax)-(pallino.getWidth()/2))); 
 		int y_pixel=(int) Math.round(((((yMax/2) + y)*screenHeight/yMax)-(pallino.getHeight()/2)));
-		viewX.setLayoutParams(new LayoutParams(x_pixel, LayoutParams.MATCH_PARENT));
-		viewY.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT, y_pixel));
+		
+		
+		viewY.getLayoutParams().height=y_pixel;
+		viewY.setLayoutParams(viewY.getLayoutParams());
+		viewX.getLayoutParams().width=x_pixel;
+		viewX.setLayoutParams(viewX.getLayoutParams());
 		
 	}
 
