@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">pro_z</string>
+    <string name="app_name">Run For Yuor Life!</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Opzioni</string>
-    <string name="title_activity_game">GameActivity</string>
+    <string name="title_activity_game">SCAPPA!!(se vuoi eh..)</string>
 	<string name="pallino">Pallino</string>
 	<string name="inizia_partita">INIZIA PARTITA</string>
 </resources>
