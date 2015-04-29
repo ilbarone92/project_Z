@@ -4,9 +4,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import android.app.Activity;
-import android.graphics.Color;
 import android.location.Location;
-import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Display;
@@ -24,15 +22,14 @@ public class GameActivity extends Activity implements Observer{
 
 	private LocationManager manager;
 	String locationProvider = LocationManager.GPS_PROVIDER;
+	
 	private Display display;
 	private int screenWidth;
 	private int screenHeight;
 	private View viewY;
 	private View viewX;
 	private ImageView pallino;
-	private boolean started = false;
-	private double startLatitude;
-	private double startLongitude;
+	
 	private int xMax;
 	private float yMax;
 	private double latitude;
@@ -40,32 +37,6 @@ public class GameActivity extends Activity implements Observer{
 
 	private TemporaryLocationListener locationListener;
 
-//	LocationListener listener = new LocationListener() {
-//
-//		@Override
-//		public void onStatusChanged(String provider, int status, Bundle extras) {
-//		}
-//
-//		@Override
-//		public void onProviderEnabled(String provider) {
-//		}
-//
-//		@Override
-//		public void onProviderDisabled(String provider) {
-//		}
-//
-//		@Override
-//		public void onLocationChanged(Location location) {
-//			if (!started) {
-//				viewX.setBackgroundColor(Color.BLUE);
-//				startLatitude = location.getLatitude();
-//				startLongitude = location.getLongitude();
-//				started = true;
-//			}
-//			updateGUI(location);
-//		}
-//
-//	};
 
 
 	@Override
@@ -85,12 +56,8 @@ public class GameActivity extends Activity implements Observer{
 		screenWidth = display.getWidth();
 		screenHeight = display.getHeight();
 
+		settaCoordinate((screenHeight / 2) - (pallino.getHeight() / 2), (screenWidth / 2) - (pallino.getWidth() / 2));
 
-		viewY.getLayoutParams().height = (screenHeight / 2) - (pallino.getHeight() / 2);
-		viewY.setLayoutParams(viewY.getLayoutParams());
-		viewX.getLayoutParams().width = (screenWidth / 2) - (pallino.getWidth() / 2);
-
-		viewX.setLayoutParams(viewX.getLayoutParams());
 		
 
 		xMax = 200;
@@ -101,11 +68,10 @@ public class GameActivity extends Activity implements Observer{
 
 	@Override
 	protected void onResume() {
+		
 		super.onResume();
 
 		manager.requestLocationUpdates(locationProvider, MIN_TIME, MIN_DISTANCE, locationListener);
-
-
 	}
 
 	public void updateGUI(Location location) {
@@ -113,19 +79,22 @@ public class GameActivity extends Activity implements Observer{
 		longitude = location.getLongitude();
 		
 		//calcolo di x e y in termini di metri
-		double x = (longitude - startLongitude)*CIRC_EQUATORE/360;
-		double y = (latitude - startLatitude)*CIRC_MERIDIANO/180;
+		double x = (longitude - locationListener.getStartLongitude())*CIRC_EQUATORE/360;
+		double y = (latitude - locationListener.getStartLatitude())*CIRC_MERIDIANO/180;
 		
 		//calcolo della x e y in termini di pixel
 		int x_pixel=(int) Math.round(((((xMax/2) + x)*screenWidth/xMax)-(pallino.getWidth()/2))); 
 		int y_pixel=(int) Math.round(((((yMax/2) + y)*screenHeight/yMax)-(pallino.getHeight()/2)));
 
-		viewY.getLayoutParams().height = y_pixel;
-		viewY.setLayoutParams(viewY.getLayoutParams());
-		viewX.getLayoutParams().width = x_pixel;
-
-		viewX.setLayoutParams(viewX.getLayoutParams());
+		settaCoordinate(x_pixel, y_pixel);
 		
+	}
+
+	private void settaCoordinate(int x, int y) {
+		viewY.getLayoutParams().height = y;
+		viewY.setLayoutParams(viewY.getLayoutParams());
+		viewX.getLayoutParams().width = x;
+		viewX.setLayoutParams(viewX.getLayoutParams());
 	}
 	
 	@Override

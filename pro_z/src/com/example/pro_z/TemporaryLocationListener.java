@@ -9,7 +9,7 @@ import android.os.Bundle;
 
 
 public class TemporaryLocationListener extends Observable implements LocationListener {
-	
+
 	private double startLatitude;
 	private double startLongitude;
 	private boolean started = false;
@@ -18,6 +18,15 @@ public class TemporaryLocationListener extends Observable implements LocationLis
 	public TemporaryLocationListener(GameActivity activity) {
 		addObserver(activity);
 	}
+	
+	public double getStartLatitude() {
+		return startLatitude;
+	}
+
+	public double getStartLongitude() {
+		return startLongitude;
+	}
+
 	
 	private void setLocation(Location location){
 		this.location=location;
