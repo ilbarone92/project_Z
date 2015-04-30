@@ -15,6 +15,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/inizia" />
+        android:background="@drawable/inizia2" />
 
 </RelativeLayout>
