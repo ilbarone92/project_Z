@@ -8,7 +8,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-
+/**
+ *Questa classe istanzia {@link MapView} e {@link MyLocationListener} per la rappresentazione
+ * e la localizzazione, istanziando gli elementi grafici che servono
+ * @author Davide
+ *
+ */
 public class GameActivity extends Activity {
 	private static final int MIN_TIME = 10000;
 	private static final int MIN_DISTANCE = 20;
@@ -20,8 +25,10 @@ public class GameActivity extends Activity {
 	private View viewY;
 	private View viewX;
 	private ImageView pallino;
+	
+	private MapView map;
 
-	private MyLocationListener locationListener;
+//	private MyLocationListener locationListener;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +39,11 @@ public class GameActivity extends Activity {
 		viewX = (View) findViewById(R.id.ViewX);
 		viewY = (View) findViewById(R.id.ViewY);
 		display = getWindowManager().getDefaultDisplay();
-
-		locationListener = new MyLocationListener(display, pallino, viewX,
-				viewY);
+		
+		map = new MapView(display, pallino, viewX, viewY);
+		
+//		locationListener = new MyLocationListener(display, pallino, viewX,
+//				viewY, map);
 
 		manager = (LocationManager) getSystemService(LOCATION_SERVICE);
 	}
@@ -45,14 +54,14 @@ public class GameActivity extends Activity {
 		super.onResume();
 
 		manager.requestLocationUpdates(locationProvider, MIN_TIME,
-				MIN_DISTANCE, locationListener);
+				MIN_DISTANCE, map.getLocationListener());
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
 		if (manager != null && manager.isProviderEnabled(locationProvider))
-			manager.removeUpdates(locationListener);
+			manager.removeUpdates(map.getLocationListener());
 	}
 
 	@Override

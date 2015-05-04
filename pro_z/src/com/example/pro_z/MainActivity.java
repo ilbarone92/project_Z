@@ -8,7 +8,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-
+/**
+ * Questa Activity fornisce una interfaccia utente d'avvio molto semplice, con un bottone per 
+ * far partire il gioco, ovvero lanciando l'activity {@link GameActivity}
+ * @author Davide
+ *
+ */
 public class MainActivity extends Activity {
 
 	private Button button;
