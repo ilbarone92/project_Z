@@ -9,8 +9,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 /**
- *Questa classe istanzia {@link MapView} e {@link MyLocationListener} per la rappresentazione
- * e la localizzazione, istanziando gli elementi grafici che servono
+ *Questa classe istanzia {@link MapView} per la rappresentazione della mappa da visualizzare,
+ * istanziando gli elementi grafici che servono per costruire l'oggetto
  * @author Davide
  *
  */

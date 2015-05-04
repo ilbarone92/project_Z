@@ -8,8 +8,13 @@ import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
 import android.widget.ImageView;
-
-
+/**
+ * Questa classe gestisce la localizzazione, in particolare il metodo onLocationChanged, implementato 
+ * dall'interfaccia {@link LocationListener} notifica la vista, {@link MapView}, quando viene rilevata una 
+ * nuova posizione dal GPS per aggiornarla.
+ * @author Davide
+ *
+ */
 public class MyLocationListener extends Observable implements LocationListener {
 
 //	private static final int CIRC_EQUATORE = 40075040;
@@ -55,7 +60,10 @@ public class MyLocationListener extends Observable implements LocationListener {
 //		viewX.getLayoutParams().width = x;
 //		viewX.setLayoutParams(viewX.getLayoutParams());
 //	}
-	
+	/**
+	 * Questo metodo notifica {@link MapView} quando viene rilevata una nuova posizione, inoltre se è il
+	 * primo rilevamento GPS imposta il flag {@started} a true
+	 */
 	@Override
 	public void onLocationChanged(Location location) {
 		if (!started) {
