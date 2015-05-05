@@ -5,7 +5,6 @@ import java.util.Observer;
 
 import android.location.Location;
 import android.location.LocationListener;
-import android.os.Bundle;
 import android.view.Display;
 import android.view.View;
 import android.widget.ImageView;
@@ -42,12 +41,12 @@ public class MapView implements Observer {
 		setWidth((screenWidth / 2) - (pallino.getWidth() / 2));
 		setHeight((screenHeight / 2) - (pallino.getHeight() / 2));
 		
-		locationListener = new MyLocationListener(this);
+		locationListener = new MyLocationListener();
 	}
 	/**
 	 * updateGUI aggiorna l'immagine della mappa ricalcolando le posizione delle viewX e viewY, 
 	 * che di conseguenza fanno spostare il pallino nella giusta posizione rispetto al centro
-	 * dello schermo, che è il punto di partenza.
+	 * dello schermo, che ï¿½ il punto di partenza.
 	 * @param location
 	 */
 	public void updateGUI(Location location) {
@@ -67,7 +66,7 @@ public class MapView implements Observer {
 		
 	}
 	/**
-	 * Questo metodo è un override del metodo update di {@link Observer}, il quale ricevuta la notifica
+	 * Questo metodo ï¿½ un override del metodo update di {@link Observer}, il quale ricevuta la notifica
 	 * del cambiamento di posizione nel metodo onLocationChanghed di {@link MyLocationListener}
 	 * lancia l'aggiornamento della GUI
 	 */

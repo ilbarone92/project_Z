@@ -42,9 +42,8 @@ public class GameActivity extends Activity {
 		
 		map = new MapView(display, pallino, viewX, viewY);
 		
-//		locationListener = new MyLocationListener(display, pallino, viewX,
-//				viewY, map);
-
+		map.getLocationListener().addObserver(map);
+		
 		manager = (LocationManager) getSystemService(LOCATION_SERVICE);
 	}
 
