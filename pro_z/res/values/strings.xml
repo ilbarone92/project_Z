@@ -5,6 +5,10 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Opzioni</string>
     <string name="title_activity_game">SCAPPA!!(se vuoi eh..)</string>
-	<string name="pallino">Pallino</string>
-	<string name="inizia_partita">INIZIA PARTITA</string>
+    <string name="pallino">Pallino</string>
+    <string name="inizia_partita">INIZIA PARTITA</string>
+    <string name="title_activity_splash">SplashActivity</string>
+    <string name="attesa">Attendo il segnale GPS</string>
+    <string name="title_activity_login">LoginActivity</string>
+	<string name="Login">Login</string>
 </resources>

@@ -41,12 +41,12 @@ public class MapView implements Observer {
 		setWidth((screenWidth / 2) - (pallino.getWidth() / 2));
 		setHeight((screenHeight / 2) - (pallino.getHeight() / 2));
 		
-		locationListener = new MyLocationListener();
+		locationListener = MyLocationListener.getMyLocationListener();
 	}
 	/**
 	 * updateGUI aggiorna l'immagine della mappa ricalcolando le posizione delle viewX e viewY, 
 	 * che di conseguenza fanno spostare il pallino nella giusta posizione rispetto al centro
-	 * dello schermo, che � il punto di partenza.
+	 * dello schermo, che è il punto di partenza.
 	 * @param location
 	 */
 	public void updateGUI(Location location) {

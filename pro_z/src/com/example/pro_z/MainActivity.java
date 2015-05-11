@@ -16,17 +16,26 @@ import android.widget.Button;
  */
 public class MainActivity extends Activity {
 
-	private Button button;
+	private Button button_inizia;
+	private Button button_login;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		button = (Button)findViewById(R.id.button1);
-		button.setOnClickListener(new OnClickListener() {
-			
+		button_inizia = (Button)findViewById(R.id.button_inizia);
+		button_login = (Button)findViewById(R.id.button_login);
+		button_inizia.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				 startActivity(new Intent(MainActivity.this,GameActivity.class));
+				 button_inizia.setBackgroundResource(R.drawable.inizia_pressed);
+				 startActivity(new Intent(MainActivity.this,SplashActivity.class));
+			}
+		});
+		button_login.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				button_login.setBackgroundResource(R.drawable.login_pressed);
+				startActivity(new Intent(MainActivity.this, LoginActivity.class));
 			}
 		});
 	}
@@ -34,7 +43,8 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		//TODO grafica per iniziare la partita (posizionare bottone ecc...)
+		button_inizia.setBackgroundResource(R.drawable.inizia);
+		button_login.setBackgroundResource(R.drawable.login);
 	}
 
 	@Override

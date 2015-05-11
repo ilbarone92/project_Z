@@ -14,15 +14,32 @@ import android.os.Bundle;
  */
 public class MyLocationListener extends Observable implements LocationListener {
 
+	private static MyLocationListener listener;
 	private double startLatitude;
 	private double startLongitude;
 	private boolean started = false;
 	private Location location;
 	
+	
+	
 	/**
-	 * Questo metodo notifica quando viene rilevata una nuova posizione, inoltre se � il
-	 * primo rilevamento GPS imposta il flag started a true
+	 * Questo metodo notifica quando viene rilevata una nuova posizione, inoltre se è il
+	 * primo rilevamento GPS imposta il flag {@started} a true
 	 */
+	
+	
+	private MyLocationListener(){
+		
+	}
+
+	
+	public static MyLocationListener getMyLocationListener(){
+		if (listener == null) {
+			listener = new MyLocationListener();
+		}
+		return listener;
+	}
+	
 	@Override
 	public void onLocationChanged(Location location) {
 		if (!started) {

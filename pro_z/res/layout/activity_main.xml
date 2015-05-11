@@ -10,11 +10,29 @@
     tools:context="com.example.pro_z.MainActivity" >
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/button_inizia"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="75dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/inizia2" />
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/inizia" />
+
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="145dp"
+        android:layout_height="75dp"
+        android:layout_alignLeft="@+id/button_inizia"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/login" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="145dp"
+        android:layout_height="75dp"
+        android:layout_alignBaseline="@+id/button_login"
+        android:layout_alignBottom="@+id/button_login"
+        android:layout_alignRight="@+id/button_inizia"
+        android:background="@drawable/mappa" />
 
 </RelativeLayout>

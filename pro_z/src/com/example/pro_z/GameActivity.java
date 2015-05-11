@@ -28,8 +28,6 @@ public class GameActivity extends Activity {
 	
 	private MapView map;
 
-//	private MyLocationListener locationListener;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -41,6 +39,7 @@ public class GameActivity extends Activity {
 		display = getWindowManager().getDefaultDisplay();
 		
 		map = new MapView(display, pallino, viewX, viewY);
+
 		
 		map.getLocationListener().addObserver(map);
 		
