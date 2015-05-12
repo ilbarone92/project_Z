@@ -55,6 +55,8 @@ public class SplashActivity extends Activity implements Observer {
 	@Override
 	public void update(Observable observable, Object data) {
 		startActivity(new Intent(SplashActivity.this, GameActivity.class));
+		listener.deleteObserver(this);
 		finish();
+		
 	}
 }
