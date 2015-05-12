@@ -1,7 +1,12 @@
 package com.example.pro_z.engine;
 
 import java.util.HashMap;
-
+import java.util.TreeMap;
+/**
+ * Questa classe modella una mappa di triangolazione, deve contenere 3 e soli {@link TriangulationPoint}
+ * @author Davide
+ *
+ */
 public class LocalizationMap {
 
 	private HashMap<String, TriangulationPoint> points;
