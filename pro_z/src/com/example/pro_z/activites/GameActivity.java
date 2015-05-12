@@ -1,4 +1,10 @@
-package com.example.pro_z;
+package com.example.pro_z.activites;
+
+import com.example.pro_z.R;
+import com.example.pro_z.R.id;
+import com.example.pro_z.R.layout;
+import com.example.pro_z.R.menu;
+import com.example.pro_z.engine.MapView;
 
 import android.app.Activity;
 import android.location.LocationManager;

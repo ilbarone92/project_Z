@@ -1,4 +1,4 @@
-package com.example.pro_z;
+package com.example.pro_z.engine;
 
 import java.util.Observable;
 import java.util.Observer;
