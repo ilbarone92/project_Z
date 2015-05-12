@@ -1,16 +1,13 @@
 package com.example.pro_z.activites;
 
-import com.example.pro_z.R;
-import com.example.pro_z.R.id;
-import com.example.pro_z.R.layout;
-import com.example.pro_z.R.menu;
-
-import android.support.v7.app.ActionBarActivity;
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MapSelectionActivity extends ActionBarActivity {
+import com.example.pro_z.R;
+
+public class MapSelectionActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
