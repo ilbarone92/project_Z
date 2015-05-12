@@ -3,11 +3,14 @@ package com.example.tests;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import java.io.IOException;
+
 import org.junit.Test;
 
 import com.example.pro_z.engine.LocalizationMap;
 import com.example.pro_z.engine.MapEngine;
 import com.example.pro_z.engine.TriangulationPoint;
+import com.example.pro_z.loading.MapLoader;
 
 public class TestMaps {
 
@@ -24,9 +27,13 @@ public class TestMaps {
 	@Test
 	public void testLoadNewMap() {
 		MapLoader loader = new MapLoader();
-		loader.load("path");
-		MapEngine.createNewMap(loader.getLastLoaded);
-		
+		MapEngine map = new MapEngine();
+		try {
+			map.calculateCoefficients(loader.load("path"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	@Test
