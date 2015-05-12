@@ -16,15 +16,17 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="80dp"
-        android:background="@drawable/inizia" />
+        android:background="@drawable/inizia_selector"
+         />
 
     <Button
         android:id="@+id/button_login"
         android:layout_width="145dp"
         android:layout_height="75dp"
-        android:layout_alignLeft="@+id/button_inizia"
+        android:layout_alignLeft="@id/button_inizia"
+        android:layout_alignStart="@id/button_inizia"
         android:layout_alignParentBottom="true"
-        android:background="@drawable/login" />
+        android:background="@drawable/login_selector" />
 
     <Button
         android:id="@+id/button1"
@@ -33,6 +35,7 @@
         android:layout_alignBaseline="@+id/button_login"
         android:layout_alignBottom="@+id/button_login"
         android:layout_alignRight="@+id/button_inizia"
-        android:background="@drawable/mappa" />
+        android:layout_alignEnd="@id/button_inizia"
+        android:background="@drawable/mappa_selector" />
 
 </RelativeLayout>

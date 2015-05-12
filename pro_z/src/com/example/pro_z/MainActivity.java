@@ -8,9 +8,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+
 /**
- * Questa Activity fornisce una interfaccia utente d'avvio molto semplice, con un bottone per 
- * far partire il gioco, lanciando l'activity {@link GameActivity} 
+ * Questa Activity fornisce una interfaccia utente d'avvio molto semplice, con
+ * un bottone per far partire il gioco, lanciando l'activity
+ * {@link GameActivity}
+ * 
  * @author Davide
  *
  */
@@ -18,23 +21,25 @@ public class MainActivity extends Activity {
 
 	private Button button_inizia;
 	private Button button_login;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		button_inizia = (Button)findViewById(R.id.button_inizia);
-		button_login = (Button)findViewById(R.id.button_login);
+		button_inizia = (Button) findViewById(R.id.button_inizia);
+		button_login = (Button) findViewById(R.id.button_login);
 		button_inizia.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				 button_inizia.setBackgroundResource(R.drawable.inizia_pressed);
-				 startActivity(new Intent(MainActivity.this,SplashActivity.class));
+
+				startActivity(new Intent(MainActivity.this,
+						SplashActivity.class));
 			}
 		});
 		button_login.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				button_login.setBackgroundResource(R.drawable.login_pressed);
+
 				startActivity(new Intent(MainActivity.this, LoginActivity.class));
 			}
 		});
@@ -43,8 +48,7 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		button_inizia.setBackgroundResource(R.drawable.inizia);
-		button_login.setBackgroundResource(R.drawable.login);
+
 	}
 
 	@Override
