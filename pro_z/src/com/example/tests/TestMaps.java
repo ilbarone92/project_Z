@@ -20,12 +20,13 @@ public class TestMaps {
 	public void testMap() {
 		assertNotNull("Missing class LocalizationMap", new LocalizationMap());
 	}
-	
+	//Test caricamento Mappa
 	@Test
 	public void testLoadNewMap() {
-		LocalizationMap map = new LocalizationMap();
-		MapEngine mapEngine = new MapEngine();
-		assertTrue(mapEngine.loadMap(map));
+		MapLoader loader = new MapLoader();
+		loader.load("path");
+		MapEngine.createNewMap(loader.getLastLoaded);
+		
 	}
 	
 	@Test
