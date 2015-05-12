@@ -1,13 +1,10 @@
 package com.example.pro_z.engine;
 
-import java.util.HashMap;
-
-import android.location.Location;
 
 public class MapEngine {
 
 	
-	private double[] coefficients;							//a,b,c,d,e,f
+	private double[] coefficients = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0,};	//a,b,c,d,e,f
 	LocalizationMap map = new LocalizationMap();
 	
 	
@@ -35,17 +32,20 @@ public class MapEngine {
 		
 		coefficients[3] = (y_cp - y_ap) / (y_cgps - y_agps);		//calcolo di 'd'
 		coefficients[5]= y_cp  - coefficients[3]*y_cgps;			//calcolo di 'f'
-		System.out.println(coefficients[5]);
-		System.out.println(y_ap  - coefficients[3]*y_agps);
+		
 	}
 	
 	public double[] getCoefficients() {
 		return coefficients;
 	}
 
-//	public int[] calculatePixelCordinate(double latitude, double longitude) {
-//		
-//		return; 
-//	}
+	public int[] calculatePixelCordinate(double latitude, double longitude) {
+		int[] coordinate = {0,0};
+		Integer xp = (int) (coefficients[0]*longitude+coefficients[4]);
+		Integer yp = (int)(coefficients[3]*latitude+coefficients[5]);
+		coordinate[0] = xp.intValue();
+		coordinate[1] = yp.intValue();
+		return coordinate; 
+	}
 
 }

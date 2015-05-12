@@ -43,20 +43,41 @@ public class TestMaps {
 		double long1=9.134210;
 		double long2=9.137102;
 		double long3=9.134210;	//A e C han stessa longitudine
-		//In realt�  i primi due parametri potranno valere 0, Display.getHeight, Display.getWidth
-		locMap.addPoint("A", new TriangulationPoint(0, 0, lat1, long1));
-		locMap.addPoint("B", new TriangulationPoint(0, 640, lat2, long2));
-		locMap.addPoint("C", new TriangulationPoint(480, 640, lat3, long3));
+		//In realtï¿œ  i primi due parametri potranno valere 0, Display.getHeight, Display.getWidth
+		locMap.addPoint("A", new TriangulationPoint(0, 640, lat1, long1));
+		locMap.addPoint("B", new TriangulationPoint(480, 640, lat2, long2));
+		locMap.addPoint("C", new TriangulationPoint(480, 0, lat3, long3));
 		map.calculateCoefficients(locMap);
 		for (int i = 0; i < map.getCoefficients().length; i++) {
-			System.out.println(map.getCoefficients()[i]);
+			System.out.println("coefficiente "+i+": "+map.getCoefficients()[i]);
 		}
 	}
-//	@Test
-//	public void testGPSConversion() {
-//		MapEngine mapEngine = new MapEngine();
-//		mapEngine.getPixelCordinate();
-//
-//	}
+		
+	@Test
+	public void testToPixelCoordinate(){
+		MapEngine map = new MapEngine();
+		LocalizationMap locMap = new LocalizationMap();
+		double lat1=45.204776;
+		double lat2=45.204776;	//A e B han stessa latitudine
+		double lat3=45.202906;
+		double long1=9.134210;
+		double long2=9.137102;
+		double long3=9.134210;	//A e C han stessa longitudine
+		//In realtà  i primi due parametri potranno valere 0, Display.getHeight, Display.getWidth
+		locMap.addPoint("A", new TriangulationPoint(0, 640, lat1, long1));
+		locMap.addPoint("B", new TriangulationPoint(480, 640, lat2, long2));
+		locMap.addPoint("C", new TriangulationPoint(480, 0, lat3, long3));
+		map.calculateCoefficients(locMap);
+		
+		//punto centrale della mappa
+		int coordinate[] = map.calculatePixelCordinate(45.203841, 9.135656);
+		
+		//testa la precisione della conversione con errore di 1px
+		int delta = 1;
+		//il test riesce se la conversione restituisce la posizione centrale dello schermo
+		assertTrue(coordinate[0]<=240+delta && coordinate[0]>=240-delta );
+		assertTrue(coordinate[1]<=320+delta && coordinate[1]>=320-delta );
+	}
+
 
 }
