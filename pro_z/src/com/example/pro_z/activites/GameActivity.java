@@ -1,11 +1,5 @@
 package com.example.pro_z.activites;
 
-import com.example.pro_z.R;
-import com.example.pro_z.R.id;
-import com.example.pro_z.R.layout;
-import com.example.pro_z.R.menu;
-import com.example.pro_z.engine.MapView;
-
 import android.app.Activity;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -14,6 +8,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.example.pro_z.R;
+import com.example.pro_z.engine.MapView;
 /**
  *Questa classe istanzia {@link MapView} per la rappresentazione della mappa da visualizzare,
  * istanziando gli elementi grafici che servono per costruire l'oggetto

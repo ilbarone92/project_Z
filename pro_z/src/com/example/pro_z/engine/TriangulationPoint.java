@@ -1,7 +1,5 @@
 package com.example.pro_z.engine;
 
-import android.location.Location;
-import android.view.Display;
 /**
  * Questa classe fornisce la struttura base per un punto di localizzazione, x e y sono le coordinate in pixel,
  * alle quali vengono fatte corrispondere le coordinate in latitudine e longitudine

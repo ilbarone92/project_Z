@@ -1,14 +1,11 @@
 package com.example.pro_z.activites;
 
-import com.example.pro_z.R;
-import com.example.pro_z.R.id;
-import com.example.pro_z.R.layout;
-import com.example.pro_z.R.menu;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.example.pro_z.R;
 
 public class LoginActivity extends Activity {
 
