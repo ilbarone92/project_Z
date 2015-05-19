@@ -3,12 +3,12 @@ package com.example.pro_z.activites;
 import java.io.IOException;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 
 import com.example.pro_z.R;
@@ -30,10 +30,12 @@ public class GameActivity extends Activity {
 	private Display display;
 	private MapLoader loader;
 	private ImageView player;
-	private String mapName;
+	//DEBUG
+	private String mapNome = "";
 	
 	private MapView map;
-
+	
+	private Intent intent;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -42,14 +44,16 @@ public class GameActivity extends Activity {
 		player = (ImageView) findViewById(R.id.player);
 		loader = new MapLoader();
 		display = getWindowManager().getDefaultDisplay();
-		
+		intent = getIntent();
 		try {
-			loader.load(mapName, display.getWidth(), display.getHeight());
+			loader.load(intent.getStringExtra("mapName"), display.getWidth(), display.getHeight());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		map = new MapView(display, player);
+		//DEBUG
+		mapNome=intent.getStringExtra("mapName");
 
 		
 		map.getLocationListener().addObserver(map);
@@ -86,5 +90,9 @@ public class GameActivity extends Activity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	//DEBUG
+	public String getMapNome() {
+		return mapNome;
 	}
 }

@@ -5,18 +5,18 @@ public class MapEngine {
 
 	
 	private double[] coefficients = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0,};	//a,b,c,d,e,f
-	LocalizationMap map = new LocalizationMap();
+	MapModel map = new MapModel();
 	
 	
 	public MapEngine() {
 	
 	}
 	
-	public boolean loadMap(LocalizationMap map) {
+	public boolean loadMap(MapModel map) {
 		return true;
 	}
 	
-	public void calculateCoefficients(LocalizationMap map){
+	public void calculateCoefficients(MapModel map){
 		int  x_ap=map.getPoints().get("A").getX();
 		int  x_bp=map.getPoints().get("B").getX();
 		double  x_agps=map.getPoints().get("A").getLongitude();

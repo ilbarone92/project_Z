@@ -13,7 +13,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import com.example.pro_z.engine.LocalizationMap;
+import com.example.pro_z.engine.MapModel;
 import com.example.pro_z.engine.TriangulationPoint;
 
 public class MapLoader {
@@ -24,10 +24,10 @@ public class MapLoader {
 		// TODO Auto-generated constructor stub
 	}
 
-	public LocalizationMap load(String mapName, int screenWidth, int screenHeight) 
+	public MapModel load(String mapName, int screenWidth, int screenHeight) 
 			throws IOException {
 
-		LocalizationMap mapModel = new LocalizationMap();
+		MapModel mapModel = new MapModel();
 		File fileXML = new File(MAPS);
 
 		try {
@@ -43,6 +43,7 @@ public class MapLoader {
 			double bLong = 0;
 			double cLat = 0;
 			double cLong = 0;
+			String imagePath = "";
 			
 			for (int i = 0; i < mapsList.getLength(); i++) {
 				Node map = mapsList.item(i);
@@ -66,6 +67,8 @@ public class MapLoader {
 							cLat = Double.parseDouble(textContent);
 						} else if (nodeName.equals("C_long")) {
 							cLong = Double.parseDouble(textContent);
+						} else if ( nodeName.equals("path")) {
+							imagePath = textContent;
 						}
 					} else if (nodeName.equals("map_name") && textContent.equals(mapName)) {
 						found = true;
@@ -76,6 +79,7 @@ public class MapLoader {
 			mapModel.addPoint("A", new TriangulationPoint(0, screenHeight, aLat, aLong));
 			mapModel.addPoint("B", new TriangulationPoint(screenWidth, screenHeight, bLat, bLong));
 			mapModel.addPoint("C", new TriangulationPoint(0, 0, cLat, cLong));
+			mapModel.setImageView(imagePath);
 			
 		} catch (DOMException e) {
 			e.printStackTrace();

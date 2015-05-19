@@ -25,6 +25,8 @@ public class SplashActivity extends Activity implements Observer {
 	private static final int MIN_DISTANCE = 20;
 	private MyLocationListener listener = MyLocationListener.getMyLocationListener();
 	
+	private Intent intent;
+	private Intent intent2;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,9 @@ public class SplashActivity extends Activity implements Observer {
 		manager = (LocationManager) getSystemService(LOCATION_SERVICE);
 		manager.requestLocationUpdates(locationProvider, MIN_TIME,
 				MIN_DISTANCE, listener);
-		
+		intent = getIntent();
+		intent2 = new Intent("com.example.pro_z.activites.GameActivity");
+		intent2.putExtra("mapName", intent.getStringExtra("mapName"));
 	}
 
 	@Override
@@ -60,7 +64,7 @@ public class SplashActivity extends Activity implements Observer {
 
 	@Override
 	public void update(Observable observable, Object data) {
-		startActivity(new Intent(SplashActivity.this, GameActivity.class));
+		startActivity(intent2);
 		listener.deleteObserver(this);
 		finish();
 		
