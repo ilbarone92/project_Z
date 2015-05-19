@@ -23,6 +23,7 @@ public class MainActivity extends Activity {
 
 	private Button button_inizia;
 	private Button button_login;
+	private Button button_mappa;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		button_inizia = (Button) findViewById(R.id.button_inizia);
 		button_login = (Button) findViewById(R.id.button_login);
+		button_mappa = (Button)findViewById(R.id.button_mappa);
 		button_inizia.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -43,6 +45,13 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 
 				startActivity(new Intent(MainActivity.this, LoginActivity.class));
+			}
+		});
+		button_mappa.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(MainActivity.this, MapSelectionActivity.class));
 			}
 		});
 	}

@@ -24,7 +24,8 @@ public class MapLoader {
 		// TODO Auto-generated constructor stub
 	}
 
-	public LocalizationMap load(String mapName) throws IOException {
+	public LocalizationMap load(String mapName, int screenWidth, int screenHeight) 
+			throws IOException {
 
 		LocalizationMap mapModel = new LocalizationMap();
 		File fileXML = new File(MAPS);
@@ -72,9 +73,8 @@ public class MapLoader {
 				}
 			}
 			
-			//TODO recuperare x e y per i tre punti
-			mapModel.addPoint("A", new TriangulationPoint(0, 0, aLat, aLong));
-			mapModel.addPoint("B", new TriangulationPoint(0, 0, bLat, bLong));
+			mapModel.addPoint("A", new TriangulationPoint(0, screenHeight, aLat, aLong));
+			mapModel.addPoint("B", new TriangulationPoint(screenWidth, screenHeight, bLat, bLong));
 			mapModel.addPoint("C", new TriangulationPoint(0, 0, cLat, cLong));
 			
 		} catch (DOMException e) {

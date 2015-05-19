@@ -1,5 +1,7 @@
 package com.example.pro_z.activites;
 
+import java.io.IOException;
+
 import android.app.Activity;
 import android.location.LocationManager;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.widget.ImageView;
 
 import com.example.pro_z.R;
 import com.example.pro_z.engine.MapView;
+import com.example.pro_z.loading.MapLoader;
 /**
  *Questa classe istanzia {@link MapView} per la rappresentazione della mappa da visualizzare,
  * istanziando gli elementi grafici che servono per costruire l'oggetto
@@ -25,9 +28,9 @@ public class GameActivity extends Activity {
 	String locationProvider = LocationManager.GPS_PROVIDER;
 
 	private Display display;
-	private View viewY;
-	private View viewX;
-	private ImageView pallino;
+	private MapLoader loader;
+	private ImageView player;
+	private String mapName;
 	
 	private MapView map;
 
@@ -36,12 +39,17 @@ public class GameActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game);
 
-		pallino = (ImageView) findViewById(R.id.pallino);
-		viewX = (View) findViewById(R.id.ViewX);
-		viewY = (View) findViewById(R.id.ViewY);
+		player = (ImageView) findViewById(R.id.player);
+		loader = new MapLoader();
 		display = getWindowManager().getDefaultDisplay();
 		
-		map = new MapView(display, pallino, viewX, viewY);
+		try {
+			loader.load(mapName, display.getWidth(), display.getHeight());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		map = new MapView(display, player);
 
 		
 		map.getLocationListener().addObserver(map);

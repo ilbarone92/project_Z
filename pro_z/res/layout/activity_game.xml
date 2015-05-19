@@ -21,12 +21,12 @@
     
 
     <ImageView
-        android:id="@+id/pallino"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/player"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_above="@id/ViewY"
         android:layout_toRightOf="@id/ViewX"
         android:contentDescription="@string/pallino"
-        android:src="@drawable/pallino_blu" />
+        android:src="@drawable/player" />
 
 </RelativeLayout>

@@ -1,9 +1,13 @@
 package com.example.pro_z.activites;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.example.pro_z.R;
 
@@ -13,7 +17,20 @@ public class MapSelectionActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_map_selection);
-	}
+		
+		//TODO creare vettore nomi mappe
+		String mappa = new String("La Nave");
+		
+		ArrayList<String> mappe = new ArrayList<String>();
+		mappe.add(mappa);
+		
+		ListView listaMappe = (ListView)findViewById(R.id.listView1);
+		
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,mappe);
+		
+		listaMappe.setAdapter(adapter);
+		
+		}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
