@@ -12,6 +12,7 @@ public class LocalizationMap {
 	private HashMap<String, TriangulationPoint> points;
 	
 	public LocalizationMap() {
+		points = new HashMap<>();
 	}
 	
 	public void addPoint(String name, TriangulationPoint point){

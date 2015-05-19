@@ -29,11 +29,12 @@ public class TestMaps {
 		MapLoader loader = new MapLoader();
 		MapEngine map = new MapEngine();
 		try {
-			map.calculateCoefficients(loader.load("path"));
+			map.calculateCoefficients(loader.load("La Nave"));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+			assertTrue(false);
 			e.printStackTrace();
 		}
+		
 	}
 	
 	@Test

@@ -39,6 +39,7 @@ public class MapEngine {
 		return coefficients;
 	}
 
+	
 	public int[] calculatePixelCordinate(double latitude, double longitude) {
 		int[] coordinate = {0,0};
 		Integer xp = (int) (coefficients[0]*longitude+coefficients[4]);
