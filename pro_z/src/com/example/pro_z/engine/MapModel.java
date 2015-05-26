@@ -1,10 +1,6 @@
 package com.example.pro_z.engine;
 
-import java.io.File;
 import java.util.HashMap;
-
-import android.net.Uri;
-import android.widget.ImageView;
 /**
  * Questa classe modella una mappa di triangolazione, deve contenere 3 e soli {@link TriangulationPoint}
  * @author Davide
@@ -13,10 +9,10 @@ import android.widget.ImageView;
 public class MapModel {
 
 	private HashMap<String, TriangulationPoint> points;
-	private ImageView imageView;
+	private String mapName;
 	
 	public MapModel() {
-		points = new HashMap<>();
+		points = new HashMap<String,TriangulationPoint>();
 	}
 	
 	public void addPoint(String name, TriangulationPoint point){
@@ -28,13 +24,11 @@ public class MapModel {
 		return points;
 	}
 	
-	public void setImageView(String path) {
-		File file = new File(path);
-		Uri uri = Uri.fromFile(file);
-		imageView.setImageURI(uri);
+	public void setMapKey(String mapName) {
+		this.mapName= mapName;
 	}
 	
-	public ImageView getImageView() {
-		return imageView;
+	public String getMapKey() {
+		return mapName;
 	}
 }

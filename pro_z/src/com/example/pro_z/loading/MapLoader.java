@@ -43,7 +43,7 @@ public class MapLoader {
 			double bLong = 0;
 			double cLat = 0;
 			double cLong = 0;
-			String imagePath = "";
+			String name = "";
 			
 			for (int i = 0; i < mapsList.getLength(); i++) {
 				Node map = mapsList.item(i);
@@ -67,19 +67,19 @@ public class MapLoader {
 							cLat = Double.parseDouble(textContent);
 						} else if (nodeName.equals("C_long")) {
 							cLong = Double.parseDouble(textContent);
-						} else if ( nodeName.equals("path")) {
-							imagePath = textContent;
+						} else if ( nodeName.equals("map_key")) {
+							name = textContent;
 						}
 					} else if (nodeName.equals("map_name") && textContent.equals(mapName)) {
 						found = true;
 					}
-				}
+				} 
 			}
 			
 			mapModel.addPoint("A", new TriangulationPoint(0, screenHeight, aLat, aLong));
 			mapModel.addPoint("B", new TriangulationPoint(screenWidth, screenHeight, bLat, bLong));
 			mapModel.addPoint("C", new TriangulationPoint(0, 0, cLat, cLong));
-			mapModel.setImageView(imagePath);
+			mapModel.setMapKey(name);
 			
 		} catch (DOMException e) {
 			e.printStackTrace();

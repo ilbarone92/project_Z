@@ -10,13 +10,19 @@ import android.view.Display;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.example.pro_z.R;
+import com.example.pro_z.engine.MapModel;
 import com.example.pro_z.engine.MapView;
+import com.example.pro_z.engine.MyLocationListener;
 import com.example.pro_z.loading.MapLoader;
+
 /**
- *Questa classe istanzia {@link MapView} per la rappresentazione della mappa da visualizzare,
- * istanziando gli elementi grafici che servono per costruire l'oggetto
+ * Questa classe istanzia {@link MapView} per la rappresentazione della mappa da
+ * visualizzare, istanziando gli elementi grafici che servono per costruire
+ * l'oggetto
+ * 
  * @author Davide
  *
  */
@@ -26,38 +32,48 @@ public class GameActivity extends Activity {
 
 	private LocationManager manager;
 	String locationProvider = LocationManager.GPS_PROVIDER;
+	private MyLocationListener listener = MyLocationListener.getMyLocationListener();
 
 	private Display display;
 	private MapLoader loader;
 	private ImageView player;
-	//DEBUG
+	private MapModel model;
+	// DEBUG
 	private String mapNome = "";
-	
+
 	private MapView map;
-	
+
 	private Intent intent;
+
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game);
+		RelativeLayout layout = (RelativeLayout) findViewById(R.id.LayoutGame);
 
 		player = (ImageView) findViewById(R.id.player);
 		loader = new MapLoader();
 		display = getWindowManager().getDefaultDisplay();
 		intent = getIntent();
 		try {
-			loader.load(intent.getStringExtra("mapName"), display.getWidth(), display.getHeight());
+			model = loader.load(intent.getStringExtra("mapName"),
+					display.getWidth(), display.getHeight());
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		map = new MapView(display, player);
-		//DEBUG
-		mapNome=intent.getStringExtra("mapName");
+		
+		
+		layout.setBackgroundResource(R.drawable.map01);
+		
+		
+		
+		mapNome = intent.getStringExtra("mapName");
 
-		
-		map.getLocationListener().addObserver(map);
-		
+		listener.addObserver(map);
+
 		manager = (LocationManager) getSystemService(LOCATION_SERVICE);
 	}
 
@@ -67,14 +83,14 @@ public class GameActivity extends Activity {
 		super.onResume();
 
 		manager.requestLocationUpdates(locationProvider, MIN_TIME,
-				MIN_DISTANCE, map.getLocationListener());
+				MIN_DISTANCE, listener);
 	}
 
 	@Override
 	protected void onPause() {
 		super.onPause();
 		if (manager != null && manager.isProviderEnabled(locationProvider))
-			manager.removeUpdates(map.getLocationListener());
+			manager.removeUpdates(listener);
 	}
 
 	@Override
@@ -91,7 +107,8 @@ public class GameActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	//DEBUG
+
+	// DEBUG
 	public String getMapNome() {
 		return mapNome;
 	}

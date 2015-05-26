@@ -17,6 +17,9 @@ import com.example.pro_z.R;
 
 public class MapSelectionActivity extends Activity {
 	private Intent intent;
+	private ArrayAdapter<String> adapter;
+	private ListView listaMappe;
+	private ArrayList<String> mappe;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -25,23 +28,21 @@ public class MapSelectionActivity extends Activity {
 		// TODO creare vettore nomi mappe
 		String mappa = new String("La Nave");
 
-		ArrayList<String> mappe = new ArrayList<String>();
+		mappe = new ArrayList<String>();
 		mappe.add(mappa);
 
-		ListView listaMappe = (ListView) findViewById(R.id.listView1);
+		listaMappe = (ListView) findViewById(R.id.listView1);
 
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+		adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, mappe);
 		intent = new Intent(this, SplashActivity.class);
 		listaMappe.setAdapter(adapter);
 		listaMappe.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> adapter, View view,
+			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				
-				intent.putExtra("mapName", adapter.getItemAtPosition(position)
-						.toString());
+				intent.putExtra("mapName", mappe.get(position));
 				startActivity(intent);
 
 			}

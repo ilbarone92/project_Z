@@ -3,12 +3,6 @@ package com.example.pro_z.activites;
 import java.util.Observable;
 import java.util.Observer;
 
-import com.example.pro_z.R;
-import com.example.pro_z.R.id;
-import com.example.pro_z.R.layout;
-import com.example.pro_z.R.menu;
-import com.example.pro_z.engine.MyLocationListener;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.location.LocationManager;
@@ -16,6 +10,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.example.pro_z.R;
+import com.example.pro_z.engine.MyLocationListener;
 
 public class SplashActivity extends Activity implements Observer {
 
@@ -34,13 +31,14 @@ public class SplashActivity extends Activity implements Observer {
 		setContentView(R.layout.activity_splash);
 		findViewById(R.id.mainSpinner1).setVisibility(View.VISIBLE);
 		
-		listener.addObserver(this);
+		
 		manager = (LocationManager) getSystemService(LOCATION_SERVICE);
 		manager.requestLocationUpdates(locationProvider, MIN_TIME,
 				MIN_DISTANCE, listener);
 		intent = getIntent();
-		intent2 = new Intent("com.example.pro_z.activites.GameActivity");
+		intent2 = new Intent(this,GameActivity.class);
 		intent2.putExtra("mapName", intent.getStringExtra("mapName"));
+		listener.addObserver(this);
 	}
 
 	@Override

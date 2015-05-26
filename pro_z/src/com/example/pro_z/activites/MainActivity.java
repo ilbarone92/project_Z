@@ -56,11 +56,7 @@ public class MainActivity extends Activity {
 		});
 	}
 
-	@Override
-	protected void onResume() {
-		super.onResume();
-
-	}
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

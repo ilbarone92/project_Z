@@ -35,14 +35,6 @@ public class MapView implements Observer {
 	public void update(Observable observable, Object data) {
 
 	}
-
-	/**
-	 * Ritorna il {@link LocationListener} relativo a questa mappa
-	 * 
-	 * @return
-	 */
-	public MyLocationListener getLocationListener() {
-		return locationListener;
-	}
+	
 
 }
