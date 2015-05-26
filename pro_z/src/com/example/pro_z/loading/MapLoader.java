@@ -14,25 +14,29 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import android.content.Context;
+import android.content.res.AssetManager;
+
 import com.example.pro_z.R;
-import com.example.pro_z.activites.GameActivity;
 import com.example.pro_z.engine.MapModel;
 import com.example.pro_z.engine.TriangulationPoint;
 
 public class MapLoader {
 
+	public static final String MAPS = "Maps.xml";
 	private HashMap<String, Integer> mapsMap = new HashMap<String, Integer>();
+	private AssetManager manager;
 	
-	public MapLoader() {
+	public MapLoader(Context context) {
 		mapsMap.put("map01.jpg", R.drawable.map01);
-		
+		manager = context.getAssets();
 	}
 	
 	public MapModel load(String mapName, int screenWidth, int screenHeight) 
 			throws IOException {
 
 		MapModel mapModel = new MapModel();
-		File fileXML = new File(GameActivity.MAPS);
+		File fileXML = new File(MapLoader.MAPS);
 
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();

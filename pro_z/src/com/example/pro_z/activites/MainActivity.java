@@ -8,10 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 
 import com.example.pro_z.R;
-import com.example.pro_z.loading.MapLoader;
 
 /**
  * Questa Activity fornisce una interfaccia utente d'avvio molto semplice, con
@@ -26,17 +24,17 @@ public class MainActivity extends Activity {
 	private Button button_inizia;
 	private Button button_login;
 	private Button button_mappa;
-	private RelativeLayout layout;
-	private MapLoader loader;
+//	private RelativeLayout layout;
+//	private MapLoader loader;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		layout= (RelativeLayout)findViewById(R.id.layout_main);
-		loader = new MapLoader();
-		layout.setBackgroundDrawable(getResources().getDrawable(
-				loader.getMapsMap().get("map01.jpg")));
+//		layout= (RelativeLayout)findViewById(R.id.layout_main);
+//		loader = new MapLoader(this);
+//		layout.setBackgroundDrawable(getResources().getDrawable(
+//				loader.getMapsMap().get("map01.jpg")));
 
 		button_inizia = (Button) findViewById(R.id.button_inizia);
 		button_login = (Button) findViewById(R.id.button_login);

@@ -46,8 +46,6 @@ public class GameActivity extends Activity {
 	private MapView map;
 
 	private Intent intent;
-	public static final String MAPS = "Maps.xml" ;
-
 	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +54,7 @@ public class GameActivity extends Activity {
 		RelativeLayout layout = (RelativeLayout) findViewById(R.id.LayoutGame);
 
 		player = (ImageView) findViewById(R.id.player);
-		loader = new MapLoader();
+		loader = new MapLoader(this);
 		display = getWindowManager().getDefaultDisplay();
 		intent = getIntent();
 		try {
