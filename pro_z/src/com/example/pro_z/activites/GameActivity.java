@@ -46,6 +46,7 @@ public class GameActivity extends Activity {
 	private MapView map;
 
 	private Intent intent;
+	public static final String MAPS = "Maps.xml" ;
 
 	@SuppressWarnings("deprecation")
 	@Override

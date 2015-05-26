@@ -15,26 +15,24 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import com.example.pro_z.R;
+import com.example.pro_z.activites.GameActivity;
 import com.example.pro_z.engine.MapModel;
 import com.example.pro_z.engine.TriangulationPoint;
 
 public class MapLoader {
 
-	private static final String MAPS = "Maps.xml" ;
 	private HashMap<String, Integer> mapsMap = new HashMap<String, Integer>();
 	
 	public MapLoader() {
-		// TODO Auto-generated constructor stub
 		mapsMap.put("map01.jpg", R.drawable.map01);
 		
 	}
-
-
+	
 	public MapModel load(String mapName, int screenWidth, int screenHeight) 
 			throws IOException {
 
 		MapModel mapModel = new MapModel();
-		File fileXML = new File(MAPS);
+		File fileXML = new File(GameActivity.MAPS);
 
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
