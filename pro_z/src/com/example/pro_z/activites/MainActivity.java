@@ -8,8 +8,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 import com.example.pro_z.R;
+import com.example.pro_z.loading.MapLoader;
 
 /**
  * Questa Activity fornisce una interfaccia utente d'avvio molto semplice, con
@@ -24,20 +26,28 @@ public class MainActivity extends Activity {
 	private Button button_inizia;
 	private Button button_login;
 	private Button button_mappa;
-
+	private RelativeLayout layout;
+	private MapLoader loader;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		layout= (RelativeLayout)findViewById(R.id.layout_main);
+		loader = new MapLoader();
+		layout.setBackgroundDrawable(getResources().getDrawable(
+				loader.getMapsMap().get("map01.jpg")));
+
 		button_inizia = (Button) findViewById(R.id.button_inizia);
 		button_login = (Button) findViewById(R.id.button_login);
-		button_mappa = (Button)findViewById(R.id.button_mappa);
+		button_mappa = (Button) findViewById(R.id.button_mappa);
+		
 		button_inizia.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
-				startActivity(new Intent(MainActivity.this,
-						SplashActivity.class));
+				Intent intent = new Intent(MainActivity.this, GameActivity.class);
+				intent.putExtra("mapName", "La Nave");
+				startActivity(intent);
 			}
 		});
 		button_login.setOnClickListener(new OnClickListener() {
@@ -48,15 +58,14 @@ public class MainActivity extends Activity {
 			}
 		});
 		button_mappa.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(MainActivity.this, MapSelectionActivity.class));
+				startActivity(new Intent(MainActivity.this,
+						MapSelectionActivity.class));
 			}
 		});
 	}
-
-	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {

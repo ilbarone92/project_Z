@@ -32,12 +32,14 @@ public class GameActivity extends Activity {
 
 	private LocationManager manager;
 	String locationProvider = LocationManager.GPS_PROVIDER;
-	private MyLocationListener listener = MyLocationListener.getMyLocationListener();
+	private MyLocationListener listener = MyLocationListener
+			.getMyLocationListener();
 
 	private Display display;
 	private MapLoader loader;
 	private ImageView player;
 	private MapModel model;
+
 	// DEBUG
 	private String mapNome = "";
 
@@ -65,11 +67,10 @@ public class GameActivity extends Activity {
 		}
 		map = new MapView(display, player);
 		
-		
-		layout.setBackgroundResource(R.drawable.map01);
-		
-		
-		
+		//layout.setBackgroundResource(R.drawable.map01);
+		layout.setBackgroundDrawable(getResources().getDrawable(
+				loader.getMapsMap().get(model.getMapKey())));
+
 		mapNome = intent.getStringExtra("mapName");
 
 		listener.addObserver(map);

@@ -35,7 +35,7 @@ public class MapSelectionActivity extends Activity {
 
 		adapter = new ArrayAdapter<String>(this,
 				android.R.layout.simple_list_item_1, mappe);
-		intent = new Intent(this, SplashActivity.class);
+		intent = new Intent(this, GameActivity.class); //TODO ripristinare splashactivity
 		listaMappe.setAdapter(adapter);
 		listaMappe.setOnItemClickListener(new OnItemClickListener() {
 
