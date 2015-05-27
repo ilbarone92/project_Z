@@ -20,6 +20,7 @@ public class MapSelectionActivity extends Activity {
 	private ArrayAdapter<String> adapter;
 	private ListView listaMappe;
 	private ArrayList<String> mappe;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -33,15 +34,13 @@ public class MapSelectionActivity extends Activity {
 
 		listaMappe = (ListView) findViewById(R.id.listView1);
 
-		adapter = new ArrayAdapter<String>(this,
-				android.R.layout.simple_list_item_1, mappe);
-		intent = new Intent(this, GameActivity.class); //TODO ripristinare splashactivity
+		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mappe);
+		intent = new Intent(this, SplashActivity.class);
 		listaMappe.setAdapter(adapter);
 		listaMappe.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				intent.putExtra("mapName", mappe.get(position));
 				startActivity(intent);
 

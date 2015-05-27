@@ -19,12 +19,11 @@ import com.example.pro_z.engine.MyLocationListener;
 import com.example.pro_z.loading.MapLoader;
 
 /**
- * Questa classe istanzia {@link MapView} per la rappresentazione della mappa da
- * visualizzare, istanziando gli elementi grafici che servono per costruire
- * l'oggetto
+ * Questa classe istanzia {@link MapView} per la rappresentazione della mappa da visualizzare,
+ * istanziando gli elementi grafici che servono per costruire l'oggetto
  * 
  * @author Davide
- *
+ * 
  */
 public class GameActivity extends Activity {
 	private static final int MIN_TIME = 10000;
@@ -32,8 +31,7 @@ public class GameActivity extends Activity {
 
 	private LocationManager manager;
 	String locationProvider = LocationManager.GPS_PROVIDER;
-	private MyLocationListener listener = MyLocationListener
-			.getMyLocationListener();
+	private MyLocationListener listener = MyLocationListener.getMyLocationListener();
 
 	private Display display;
 	private MapLoader loader;
@@ -46,6 +44,7 @@ public class GameActivity extends Activity {
 	private MapView map;
 
 	private Intent intent;
+
 	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -58,15 +57,13 @@ public class GameActivity extends Activity {
 		display = getWindowManager().getDefaultDisplay();
 		intent = getIntent();
 		try {
-			model = loader.load(intent.getStringExtra("mapName"),
-					display.getWidth(), display.getHeight());
+			model = loader.load(intent.getStringExtra("mapName"), display.getWidth(),
+					display.getHeight());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		map = new MapView(display, player);
-		
-		//layout.setBackgroundResource(R.drawable.map01);
+
 		layout.setBackgroundDrawable(getResources().getDrawable(
 				loader.getMapsMap().get(model.getMapKey())));
 
@@ -82,8 +79,7 @@ public class GameActivity extends Activity {
 
 		super.onResume();
 
-		manager.requestLocationUpdates(locationProvider, MIN_TIME,
-				MIN_DISTANCE, listener);
+		manager.requestLocationUpdates(locationProvider, MIN_TIME, MIN_DISTANCE, listener);
 	}
 
 	@Override

@@ -12,38 +12,38 @@ import android.widget.Button;
 import com.example.pro_z.R;
 
 /**
- * Questa Activity fornisce una interfaccia utente d'avvio molto semplice, con
- * un bottone per far partire il gioco, lanciando l'activity
- * {@link GameActivity}
+ * Questa Activity fornisce una interfaccia utente d'avvio molto semplice, con un bottone per far
+ * partire il gioco, lanciando l'activity {@link GameActivity}
  * 
  * @author Davide
- *
+ * 
  */
 public class MainActivity extends Activity {
 
 	private Button button_inizia;
 	private Button button_login;
 	private Button button_mappa;
-//	private RelativeLayout layout;
-//	private MapLoader loader;
-	
+
+	// private RelativeLayout layout;
+	// private MapLoader loader;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-//		layout= (RelativeLayout)findViewById(R.id.layout_main);
-//		loader = new MapLoader(this);
-//		layout.setBackgroundDrawable(getResources().getDrawable(
-//				loader.getMapsMap().get("map01.jpg")));
+		// layout= (RelativeLayout)findViewById(R.id.layout_main);
+		// loader = new MapLoader(this);
+		// layout.setBackgroundDrawable(getResources().getDrawable(
+		// loader.getMapsMap().get("map01.jpg")));
 
 		button_inizia = (Button) findViewById(R.id.button_inizia);
 		button_login = (Button) findViewById(R.id.button_login);
 		button_mappa = (Button) findViewById(R.id.button_mappa);
-		
+
 		button_inizia.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, GameActivity.class);
+				Intent intent = new Intent(MainActivity.this, SplashActivity.class);
 				intent.putExtra("mapName", "La Nave");
 				startActivity(intent);
 			}
@@ -59,8 +59,7 @@ public class MainActivity extends Activity {
 
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent(MainActivity.this,
-						MapSelectionActivity.class));
+				startActivity(new Intent(MainActivity.this, MapSelectionActivity.class));
 			}
 		});
 	}
