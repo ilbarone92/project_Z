@@ -3,16 +3,11 @@ package com.example.tests;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import java.io.IOException;
-
 import org.junit.Test;
 
-import com.example.pro_z.activites.GameActivity;
-import com.example.pro_z.activites.MapSelectionActivity;
-import com.example.pro_z.engine.MapModel;
 import com.example.pro_z.engine.MapEngine;
+import com.example.pro_z.engine.MapModel;
 import com.example.pro_z.engine.TriangulationPoint;
-import com.example.pro_z.loading.MapLoader;
 
 public class TestMaps {
 
@@ -26,19 +21,19 @@ public class TestMaps {
 		assertNotNull("Missing class LocalizationMap", new MapModel());
 	}
 	//Test caricamento Mappa
-	@Test
-	public void testLoadNewMap() {
-		MapLoader loader = new MapLoader();
-		MapEngine map = new MapEngine();
-
+//	@Test
+//	public void testLoadNewMap() {
+//		MapLoader loader = new MapLoader();
+//		MapEngine map = new MapEngine();
+//
 //		try {
 //			map.calculateCoefficients(loader.load("La Nave"));
 //		} catch (IOException e) {
 //			assertTrue(false);
 //			e.printStackTrace();
 //		}
-
-	}
+//
+//	}
 	
 	@Test
 	public void testLoadNewMapFromConstructor() {
