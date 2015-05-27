@@ -1,7 +1,7 @@
 package com.example.pro_z.loading;
 
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -36,12 +36,13 @@ public class MapLoader {
 			throws IOException {
 
 		MapModel mapModel = new MapModel();
-		File fileXML = new File(MapLoader.MAPS);
-
+		
+		InputStream is = manager.open(MAPS);
+		
 		try {
 			DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder builder = dbFactory.newDocumentBuilder();
-			Document doc = builder.parse(fileXML);
+			Document doc = builder.parse(is);
 
 			NodeList mapsList = doc.getElementsByTagName("map");
 
