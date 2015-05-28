@@ -3,5 +3,8 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    
+    <!-- Various text dimensions -->
+	<dimen name="map_selection_label">20dp</dimen>
 
 </resources>
