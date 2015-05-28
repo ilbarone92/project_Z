@@ -12,8 +12,8 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 
 import com.example.pro_z.R;
-import com.example.pro_z.loading.MapLoader;
 import com.example.pro_z.utils.MapSelectionAdapter;
+import com.example.pro_z.utils.Maps;
 
 public class MapSelectionActivity extends Activity {
 	private Intent intent;
@@ -26,8 +26,7 @@ public class MapSelectionActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_map_selection);
 
-		MapLoader loader = new MapLoader(this);
-		mappe = loader.getMapsMap();
+		mappe = Maps.get().getMaps();
 		
 		elencoMappe = (GridView) findViewById(R.id.grid_view);
 

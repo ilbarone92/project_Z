@@ -17,6 +17,7 @@ import com.example.pro_z.engine.MapModel;
 import com.example.pro_z.engine.MapView;
 import com.example.pro_z.engine.MyLocationListener;
 import com.example.pro_z.loading.MapLoader;
+import com.example.pro_z.utils.Maps;
 
 /**
  * Questa classe istanzia {@link MapView} per la rappresentazione della mappa da visualizzare,
@@ -65,7 +66,7 @@ public class GameActivity extends Activity {
 		map = new MapView(display, player);
 
 		layout.setBackgroundDrawable(getResources().getDrawable(
-				loader.getMapsMap().get(model.getMapKey())));
+				Maps.get().getMaps().get(model.getMapKey())));
 
 		mapNome = intent.getStringExtra("mapName");
 
