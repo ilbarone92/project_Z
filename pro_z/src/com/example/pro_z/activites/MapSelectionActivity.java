@@ -1,70 +1,53 @@
 package com.example.pro_z.activites;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.GridView;
 
 import com.example.pro_z.R;
+import com.example.pro_z.loading.MapLoader;
+import com.example.pro_z.utils.MapSelectionAdapter;
 
 public class MapSelectionActivity extends Activity {
 	private Intent intent;
-	private ArrayAdapter<String> adapter;
-	private ListView listaMappe;
-	private ArrayList<String> mappe;
+	private MapSelectionAdapter adapter;
+	private GridView elencoMappe;
+	private HashMap<String, Integer> mappe;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_map_selection);
 
-		// TODO creare vettore nomi mappe
-		String mappa = new String("La Nave");
+		MapLoader loader = new MapLoader(this);
+		mappe = loader.getMapsMap();
+		
+		elencoMappe = (GridView) findViewById(R.id.grid_view);
 
-		mappe = new ArrayList<String>();
-		mappe.add(mappa);
+		adapter = new MapSelectionAdapter(this, mappe);
+		
+		elencoMappe.setAdapter(adapter);
+		elencoMappe.setOnItemClickListener(new OnItemClickListener() {
 
-		listaMappe = (ListView) findViewById(R.id.listView1);
-
-		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, mappe);
-		intent = new Intent(this, SplashActivity.class);
-		listaMappe.setAdapter(adapter);
-		listaMappe.setOnItemClickListener(new OnItemClickListener() {
-
+			@SuppressWarnings("unchecked")
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				intent.putExtra("mapName", mappe.get(position));
+				
+				Entry<String, Integer> map = (Entry<String, Integer>)adapter.getItem(position);
+				String mapName = map.getKey();
+				intent = new Intent(MapSelectionActivity.this, SplashActivity.class);
+				intent.putExtra("mapName", mapName);
 				startActivity(intent);
 
 			}
 
 		});
-	}
-
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.map_selection, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
 	}
 }

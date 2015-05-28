@@ -4,7 +4,8 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     
-    <!-- Various text dimensions -->
-	<dimen name="map_selection_label">20dp</dimen>
+    <!-- Personalized dimensions -->
+	<dimen name="map_selection_text">20dp</dimen>
+	<dimen name="grid_view_top_margin">15dp</dimen>
 
 </resources>
