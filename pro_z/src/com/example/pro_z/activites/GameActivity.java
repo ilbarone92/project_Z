@@ -29,7 +29,7 @@ import com.example.pro_z.utils.Maps;
  */
 public class GameActivity extends Activity {
 	private static final int MIN_TIME = 10000;
-	private static final int MIN_DISTANCE = 20;
+	private static final int MIN_DISTANCE = 5;
 
 	private LocationManager manager;
 	String locationProvider = LocationManager.GPS_PROVIDER;

@@ -3,7 +3,6 @@
     android:id="@+id/LayoutGame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/mappa_nave"
     tools:context=".GameActivity" >
 
 
@@ -11,7 +10,6 @@
         android:id="@+id/player"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_marginLeft="-100dp"
         android:layout_alignParentBottom="true"
         android:contentDescription="@string/pallino"
         android:src="@drawable/player" />
