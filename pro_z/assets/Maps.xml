@@ -9,6 +9,33 @@
        <C_lat>45.198188</C_lat>
        <C_long>9.132730</C_long>
     </map>
+    <map>
+       <map_name>La Nave2</map_name>
+       <A_lat>45.206728</A_lat>
+       <A_long>9.132730</A_long>
+       <B_lat>45.206728</B_lat>
+       <B_long>9.140628</B_long>
+       <C_lat>45.198188</C_lat>
+       <C_long>9.132730</C_long>
+    </map>
+    <map>
+       <map_name>La Nave3</map_name>
+       <A_lat>45.206728</A_lat>
+       <A_long>9.132730</A_long>
+       <B_lat>45.206728</B_lat>
+       <B_long>9.140628</B_long>
+       <C_lat>45.198188</C_lat>
+       <C_long>9.132730</C_long>
+    </map>
+    <map>
+       <map_name>La Nave4</map_name>
+       <A_lat>45.206728</A_lat>
+       <A_long>9.132730</A_long>
+       <B_lat>45.206728</B_lat>
+       <B_long>9.140628</B_long>
+       <C_lat>45.198188</C_lat>
+       <C_long>9.132730</C_long>
+    </map>
     
     
 </maplist>

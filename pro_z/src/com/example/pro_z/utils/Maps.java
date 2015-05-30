@@ -12,7 +12,11 @@ public class Maps {
 	
 	private Maps() {
 		maps.put("La Nave", R.drawable.map01);
-	}
+		maps.put("La Nave2", R.drawable.map01);
+		maps.put("La Nave3", R.drawable.map01);
+		maps.put("La Nave4", R.drawable.map01);
+		
+		}
 	
 	public static Maps get() {
 		return MAPS;

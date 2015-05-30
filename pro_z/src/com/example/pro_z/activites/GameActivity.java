@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Display;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.example.pro_z.R;
+import com.example.pro_z.engine.MapEngine;
 import com.example.pro_z.engine.MapModel;
 import com.example.pro_z.engine.MapView;
 import com.example.pro_z.engine.MyLocationListener;
@@ -38,7 +40,9 @@ public class GameActivity extends Activity {
 	private MapLoader loader;
 	private ImageView player;
 	private MapModel model;
-
+	private MapEngine engine;
+	
+	
 	// DEBUG
 	private String mapNome = "";
 
@@ -63,7 +67,8 @@ public class GameActivity extends Activity {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		map = new MapView(display, player);
+		engine = new MapEngine(model);
+		map = new MapView(display, player,engine);
 
 		layout.setBackgroundDrawable(getResources().getDrawable(
 				Maps.get().getMaps().get(model.getMapKey())));

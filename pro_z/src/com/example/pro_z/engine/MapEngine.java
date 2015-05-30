@@ -5,15 +5,8 @@ public class MapEngine {
 
 	
 	private double[] coefficients = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0,};	//a,b,c,d,e,f
-	MapModel map = new MapModel();
-	
-	
-	public MapEngine() {
-	
-	}
-	
-	public boolean loadMap(MapModel map) {
-		return true;
+	public MapEngine(MapModel model) {
+		calculateCoefficients(model);
 	}
 	
 	public void calculateCoefficients(MapModel map){
@@ -35,10 +28,7 @@ public class MapEngine {
 		
 	}
 	
-	public double[] getCoefficients() {
-		return coefficients;
-	}
-
+	
 	
 	public int[] calculatePixelCordinate(double latitude, double longitude) {
 		int[] coordinate = {0,0};

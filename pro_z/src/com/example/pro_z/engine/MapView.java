@@ -3,7 +3,7 @@ package com.example.pro_z.engine;
 import java.util.Observable;
 import java.util.Observer;
 
-import android.location.LocationListener;
+import android.location.Location;
 import android.view.Display;
 import android.widget.ImageView;
 
@@ -18,10 +18,10 @@ public class MapView implements Observer {
 
 	private ImageView player;
 	private MyLocationListener locationListener;
-
-	public MapView(Display display, ImageView player) {
+	private MapEngine engine;
+	public MapView(Display display, ImageView player, MapEngine engine) {
 		this.player = player;
-
+		this.engine = engine;
 		locationListener = MyLocationListener.getMyLocationListener();
 	}
 
@@ -33,7 +33,8 @@ public class MapView implements Observer {
 	 */
 	@Override
 	public void update(Observable observable, Object data) {
-
+		Location location = locationListener.getLocation();
+		
 	}
 	
 

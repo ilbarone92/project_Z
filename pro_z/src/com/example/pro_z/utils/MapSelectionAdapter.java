@@ -4,8 +4,6 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 import java.util.Set;
 
-import com.example.pro_z.R;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -14,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.pro_z.R;
 
 public class MapSelectionAdapter extends BaseAdapter {
 
@@ -25,7 +25,7 @@ public class MapSelectionAdapter extends BaseAdapter {
 		this.maps = maps;
 		this.context = context;
 	}
-
+	
 	@Override
 	public int getCount() {
 		return maps.size();
@@ -55,9 +55,11 @@ public class MapSelectionAdapter extends BaseAdapter {
 		
 		ImageView iv = (ImageView) convertView.findViewById(R.id.map_image_view);
 		iv.setImageResource(map.getValue());
+
 		
 		TextView tv = (TextView) convertView.findViewById(R.id.map_text_view);
 		tv.setText(map.getKey());
+		
 		
 		return convertView;
 	}
