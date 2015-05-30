@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.Display;
