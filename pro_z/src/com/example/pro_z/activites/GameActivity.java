@@ -13,7 +13,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.example.pro_z.R;
-import com.example.pro_z.engine.MapEngine;
 import com.example.pro_z.engine.MapModel;
 import com.example.pro_z.engine.MapView;
 import com.example.pro_z.engine.MyLocationListener;
@@ -65,7 +64,7 @@ public class GameActivity extends Activity {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		MapView map = new MapView(display, player,new MapEngine(model));
+		MapView map = new MapView(display, player,model);
 
 		layout.setBackgroundDrawable(getResources().getDrawable(
 				Maps.get().getMaps().get(model.getMapKey())));

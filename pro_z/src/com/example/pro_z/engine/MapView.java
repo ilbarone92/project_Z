@@ -19,12 +19,12 @@ public class MapView implements Observer {
 
 	private ImageView player;
 	private MyLocationListener locationListener;
-	private MapEngine engine;
+	private MapModel model;
 	private Display display;
 
-	public MapView(Display display, ImageView player, MapEngine engine) {
+	public MapView(Display display, ImageView player, MapModel model) {
 		this.player = player;
-		this.engine = engine;
+		this.model = model;
 		this.display = display;
 		locationListener = MyLocationListener.getMyLocationListener();
 	}
@@ -39,7 +39,7 @@ public class MapView implements Observer {
 	@Override
 	public void update(Observable observable, Object data) {
 		Location location = locationListener.getLocation();
-		int[] pixelCoordinates = engine.calculatePixelCordinate(location.getLatitude(), location.getLongitude());
+		int[] pixelCoordinates = calculatePixelCordinate(location.getLatitude(), location.getLongitude());
 		for (int i : pixelCoordinates) {
 			if (i<0) {
 				i=0;
@@ -54,6 +54,15 @@ public class MapView implements Observer {
 		params.setMargins(pixelCoordinates[0], 0, 0, pixelCoordinates[1]);
 		player.setLayoutParams(params);
 		
+	}
+	
+	public int[] calculatePixelCordinate(double latitude, double longitude) {
+		int[] coordinate = {0,0};
+		Integer xp = (int) (model.getCoefficients()[0]*longitude+model.getCoefficients()[4]);
+		Integer yp = (int)(model.getCoefficients()[3]*latitude+model.getCoefficients()[5]);
+		coordinate[0] = xp.intValue();
+		coordinate[1] = yp.intValue();
+		return coordinate; 
 	}
 
 }

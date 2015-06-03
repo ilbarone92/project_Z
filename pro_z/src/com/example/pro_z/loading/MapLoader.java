@@ -2,6 +2,7 @@ package com.example.pro_z.loading;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -30,7 +31,7 @@ public class MapLoader {
 
 	public MapModel load(String mapName, int screenWidth, int screenHeight) throws IOException {
 
-		MapModel mapModel = new MapModel();
+		MapModel mapModel;
 
 		InputStream is = manager.open(MAPS);
 
@@ -76,11 +77,17 @@ public class MapLoader {
 					}
 				}
 			}
-
-			mapModel.addPoint("A", new TriangulationPoint(0, screenHeight, aLat, aLong));
-			mapModel.addPoint("B", new TriangulationPoint(screenWidth, screenHeight, bLat, bLong));
-			mapModel.addPoint("C", new TriangulationPoint(0, 0, cLat, cLong));
+			
+			HashMap<String, TriangulationPoint> mappaPunti = new HashMap<String, TriangulationPoint>();
+			mappaPunti.put("A", new TriangulationPoint(0, screenHeight, aLat, aLong));
+			mappaPunti.put("B", new TriangulationPoint(screenWidth, screenHeight, bLat, bLong));
+			mappaPunti.put("C", new TriangulationPoint(0, 0, cLat, cLong));
+			
+			mapModel = new MapModel(mappaPunti);
+			
 			mapModel.setMapKey(mapName);
+			
+			return mapModel;
 
 		} catch (DOMException e) {
 			e.printStackTrace();
@@ -89,8 +96,7 @@ public class MapLoader {
 		} catch (SAXException e) {
 			e.printStackTrace();
 		}
-
-		return mapModel;
+		return null;
 	}
 
 }
