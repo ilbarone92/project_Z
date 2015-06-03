@@ -7,10 +7,12 @@ import java.io.IOException;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.example.pro_z.activites.MapSelectionActivity;
 import com.example.pro_z.engine.MapEngine;
 import com.example.pro_z.engine.MapModel;
 import com.example.pro_z.engine.TriangulationPoint;
 import com.example.pro_z.loading.MapLoader;
+import com.example.pro_z.utils.Maps;
 
 public class TestMaps {
 	
@@ -66,6 +68,11 @@ public class TestMaps {
 		//il test riesce se la conversione restituisce la posizione centrale dello schermo
 		assertTrue(coordinate[0]<=240+delta && coordinate[0]>=240-delta );
 		assertTrue(coordinate[1]<=320+delta && coordinate[1]>=320-delta );
+	}
+	
+	@Test
+	public void testMapSingleton() {
+		assertNotNull(Maps.get());
 	}
 
 
