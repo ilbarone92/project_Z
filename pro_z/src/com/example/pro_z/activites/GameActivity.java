@@ -39,13 +39,12 @@ public class GameActivity extends Activity {
 	private MapLoader loader;
 	private ImageView player;
 	private MapModel model;
-	private MapEngine engine;
 	
 	
 	// DEBUG
 	private String mapNome = "";
 
-	private MapView map;
+
 
 	private Intent intent;
 
@@ -66,8 +65,7 @@ public class GameActivity extends Activity {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		engine = new MapEngine(model);
-		map = new MapView(display, player,engine);
+		MapView map = new MapView(display, player,new MapEngine(model));
 
 		layout.setBackgroundDrawable(getResources().getDrawable(
 				Maps.get().getMaps().get(model.getMapKey())));

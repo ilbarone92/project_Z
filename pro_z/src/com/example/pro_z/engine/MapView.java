@@ -53,6 +53,7 @@ public class MapView implements Observer {
 		LayoutParams params = (LayoutParams)player.getLayoutParams();
 		params.setMargins(pixelCoordinates[0], 0, 0, pixelCoordinates[1]);
 		player.setLayoutParams(params);
+		
 	}
 
 }
