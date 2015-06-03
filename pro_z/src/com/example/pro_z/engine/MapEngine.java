@@ -5,11 +5,12 @@ public class MapEngine {
 
 	
 	private double[] coefficients = {0.0, 0.0, 0.0, 0.0, 0.0, 0.0,};	//a,b,c,d,e,f
+	
 	public MapEngine(MapModel model) {
 		calculateCoefficients(model);
 	}
 	
-	public void calculateCoefficients(MapModel map){
+	private void calculateCoefficients(MapModel map){
 		int  x_ap=map.getPoints().get("A").getX();
 		int  x_bp=map.getPoints().get("B").getX();
 		double  x_agps=map.getPoints().get("A").getLongitude();
