@@ -29,14 +29,6 @@
         android:layout_alignParentBottom="true"
         android:background="@drawable/login_selector" />
 
-    <Button
-        android:id="@+id/button_mappa"
-        android:layout_width="145dp"
-        android:layout_height="75dp"
-        android:layout_alignBaseline="@+id/button_login"
-        android:layout_alignBottom="@+id/button_login"
-        android:layout_alignRight="@+id/button_inizia"
-        android:layout_alignEnd="@id/button_inizia"
-        android:background="@drawable/mappa_selector" />
+   
 
 </RelativeLayout>

@@ -22,7 +22,6 @@ public class MainActivity extends Activity {
 
 	private Button button_inizia;
 	private Button button_login;
-	private Button button_mappa;
 
 	// private RelativeLayout layout;
 	// private MapLoader loader;
@@ -38,14 +37,11 @@ public class MainActivity extends Activity {
 
 		button_inizia = (Button) findViewById(R.id.button_inizia);
 		button_login = (Button) findViewById(R.id.button_login);
-		button_mappa = (Button) findViewById(R.id.button_mappa);
 
 		button_inizia.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(MainActivity.this, SplashActivity.class);
-				intent.putExtra("mapName", "La Nave");
-				startActivity(intent);
+				startActivity(new Intent(MainActivity.this, MapSelectionActivity.class));
 			}
 		});
 		button_login.setOnClickListener(new OnClickListener() {
@@ -53,13 +49,6 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 
 				startActivity(new Intent(MainActivity.this, LoginActivity.class));
-			}
-		});
-		button_mappa.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				startActivity(new Intent(MainActivity.this, MapSelectionActivity.class));
 			}
 		});
 	}
