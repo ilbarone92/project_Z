@@ -14,8 +14,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.pro_z.R;
+import com.example.pro_z.activites.MapSelectionActivity;
 /**
- * 
+ * Questo Adapter si occupa di dare una veste grafica ai singoli elementi della lista cui sarà associato
  * @author Davide
  *
  */

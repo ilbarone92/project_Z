@@ -4,7 +4,8 @@ import java.util.HashMap;
 
 import com.example.pro_z.R;
 /**
- * {@link Maps} si occupa di mettere in corrispondenza il nome di una mappa con la relativa immagine attraverso un' {@link HashMap}
+ * {@link Maps} è un Singleton e si occupa di mettere in corrispondenza il nome di una mappa con la relativa immagine
+ *  attraverso un' {@link HashMap}
  * @author Davide
  *
  */
