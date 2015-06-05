@@ -30,10 +30,9 @@ public class MapView implements Observer {
 	}
 
 	/**
-	 * Questo metodo ï¿½ un override del metodo update di {@link Observer}, il
+	 * Questo metodo è un override del metodo update di {@link Observer}, il
 	 * quale ricevuta la notifica del cambiamento di posizione nel metodo
-	 * onLocationChanghed di {@link MyLocationListener} lancia l'aggiornamento
-	 * della GUI
+	 * onLocationChanghed di {@link MyLocationListener} aggiorna l'indicatore della posizione del giocatore 
 	 */
 	@SuppressWarnings("deprecation")
 	@Override
@@ -55,7 +54,12 @@ public class MapView implements Observer {
 		player.setLayoutParams(params);
 		
 	}
-	
+	/**
+	 * Questo metodo effettua la conversione posizione geografica-posizione in pixel prendendo i coefficienti da {@link MapModel}
+	 * @param latitude
+	 * @param longitude
+	 * @return
+	 */
 	public int[] calculatePixelCordinate(double latitude, double longitude) {
 		int[] coordinate = {0,0};
 		Integer xp = (int) (model.getCoefficients()[0]*longitude+model.getCoefficients()[4]);

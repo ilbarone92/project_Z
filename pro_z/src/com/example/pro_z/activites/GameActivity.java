@@ -20,8 +20,8 @@ import com.example.pro_z.loading.MapLoader;
 import com.example.pro_z.utils.Maps;
 
 /**
- * Questa classe istanzia {@link MapView} per la rappresentazione della mappa da visualizzare,
- * istanziando gli elementi grafici che servono per costruire l'oggetto
+ * Questa classe gestisce le risorse della partita tra cui la parte grafica {@link MapView} per la rappresentazione della mappa da visualizzare;
+ *  il {@link MyLocationListener} per la localizzazione GPS e il caricamento dei dati per la triangolazione attraverso {@link MapLoader}
  * 
  * @author Davide
  * 
@@ -47,6 +47,11 @@ public class GameActivity extends Activity {
 
 	private Intent intent;
 
+	/**
+	 *Questo OnCreate carica le risorse grafiche per poter istanziare in locale MapView, e prova a caricare i dati della mappa dal database
+	 * da assets/Maps.xml, avendo precedentemente istanziato un {@link MapLoader}; questo utilizza il nome della mappa da aprire che le 
+	 * viene passato dalla precedente Activity {@link MapSelectionActivity} sfruttando gli StringExtra di {@link Intent}
+	 */
 	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

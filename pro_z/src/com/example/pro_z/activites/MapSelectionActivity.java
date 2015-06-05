@@ -12,15 +12,25 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.GridView;
 
 import com.example.pro_z.R;
+import com.example.pro_z.engine.MapView;
 import com.example.pro_z.utils.MapSelectionAdapter;
 import com.example.pro_z.utils.Maps;
-
+/**
+ * Questa Activity permette all'utente di selezionare la mappa in cui poter giocare attraverso una {@link GridView}, le Mappe sono prese da 
+ * {@link Maps} 
+ * @author Davide
+ *
+ */
 public class MapSelectionActivity extends Activity {
 	private Intent intent;
 	private MapSelectionAdapter adapter;
 	private GridView elencoMappe;
 	private HashMap<String, Integer> mappe;
-
+/**
+ * 
+ * per poterle elencare, e il nome di quella selezionata è messo come StringExtra di {@link Intent} così che {@link GameActivity}
+ * carichi istanzi {@link MapView} con la corretta immagine 
+ */
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

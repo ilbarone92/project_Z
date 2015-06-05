@@ -13,7 +13,7 @@ import com.example.pro_z.R;
 
 /**
  * Questa Activity fornisce una interfaccia utente d'avvio molto semplice, con un bottone per far
- * partire il gioco, lanciando l'activity {@link GameActivity}
+ * partire il gioco( lanciando l'activity {@link GameActivity}); uno per selezionare la mappa e uno per eseguire il Login
  * 
  * @author Davide
  * 

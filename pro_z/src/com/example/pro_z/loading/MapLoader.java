@@ -19,7 +19,11 @@ import android.content.res.AssetManager;
 
 import com.example.pro_z.engine.MapModel;
 import com.example.pro_z.engine.TriangulationPoint;
-
+/**
+ * {@link MapLoader} si occupa di caricare una mappa attraverso il metodo load
+ * @author Davide
+ *
+ */
 public class MapLoader {
 
 	public static final String MAPS = "Maps.xml";
@@ -28,7 +32,15 @@ public class MapLoader {
 	public MapLoader(Context context) {
 		manager = context.getAssets();
 	}
-
+/**
+ *  Questo metodo ricevuti le dimensioni dello schermo e il nome della mappa ne cerca i dati relativi del database assets/Maps.xml e
+ *   costruisce il modello ritornando un {@link MapModel}
+ * @param mapName
+ * @param screenWidth
+ * @param screenHeight
+ * @return
+ * @throws IOException
+ */
 	public MapModel load(String mapName, int screenWidth, int screenHeight) throws IOException {
 
 		MapModel mapModel;

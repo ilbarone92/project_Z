@@ -3,7 +3,11 @@ package com.example.pro_z.utils;
 import java.util.HashMap;
 
 import com.example.pro_z.R;
-
+/**
+ * {@link Maps} si occupa di mettere in corrispondenza il nome di una mappa con la relativa immagine attraverso un' {@link HashMap}
+ * @author Davide
+ *
+ */
 public class Maps {
 
 	private static Maps MAPS = new Maps();

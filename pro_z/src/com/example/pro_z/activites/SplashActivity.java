@@ -13,7 +13,11 @@ import android.view.View;
 
 import com.example.pro_z.R;
 import com.example.pro_z.engine.MyLocationListener;
-
+/**
+ * Questa Activity compare prima all'avvio della partita e rappresenta una pagina di caricamento, in attesa che il GPS trovi la prima posizione
+ * @author Davide
+ *
+ */
 public class SplashActivity extends Activity implements Observer {
 
 	private LocationManager manager;

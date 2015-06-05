@@ -2,7 +2,9 @@ package com.example.pro_z.engine;
 
 import java.util.HashMap;
 /**
- * Questa classe modella una mappa di triangolazione, deve contenere 3 e soli {@link TriangulationPoint}
+ * Questa classe modella una mappa di triangolazione,che deve contenere 3 e soli {@link TriangulationPoint}, e inoltre calcola in un primo
+ *  momento i coefficienti della trasformazione lineare che convertono qualsiasi coodinata geografica in una posizione sullo schermo
+ * 
  * @author Davide
  *
  */
@@ -18,10 +20,11 @@ public class MapModel {
 	}
 	
 	public void addPoint(String name, TriangulationPoint point){
-		//TODO permettere l'inserimento di n. 3 punti
 		points.put(name, point);
 	}
-	
+	/**
+	 * Questo metodo risolve il sistema lineare per calcolare i coefficienti necessari alla conversione posizione geografica-pozizione in pixel
+	 */
 	private void calculateCoefficients(){
 		int  x_ap=points.get("A").getX();
 		int  x_bp=points.get("B").getX();

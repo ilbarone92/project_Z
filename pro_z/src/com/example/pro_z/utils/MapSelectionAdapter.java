@@ -14,7 +14,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.pro_z.R;
-
+/**
+ * 
+ * @author Davide
+ *
+ */
 public class MapSelectionAdapter extends BaseAdapter {
 
 	private HashMap<String, Integer> maps;
